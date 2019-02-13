@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+def home(request):
+    return render(request, "home.html",{})
 
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the home page.")
+def gitlink(request):
+    link = redirect('https://github.com/UVA-CS3240-S19/project-102-nautilus')
+    return link

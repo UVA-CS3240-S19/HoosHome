@@ -12,7 +12,7 @@ class Listing(models.Model):
     price = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.address
+        return self.address + " posted on " + pub_date + " for " + price + "\nDescription: " + description
 
     def published_recently(self):
         now = timezone.now()

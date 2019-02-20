@@ -1,6 +1,15 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate
+from django.views.generic import CreateView, ListView
 from .forms import SignUpForm
+from .models import Listing
+
+class ListingCreateView(CreateView):
+    model = Listing
+    fields = ('pub_date', 'address', 'realtor_agent', 'description', 'price')
+
+class ListingList(ListView):
+    model = Listing
 
 def home(request):
     return render(request, "home.html",{})

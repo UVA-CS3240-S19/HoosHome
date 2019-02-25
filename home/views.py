@@ -9,7 +9,12 @@ class ListingCreateView(CreateView):
     fields = ('pub_date', 'address', 'realtor_agent', 'description', 'price')
 
 class ListingList(ListView):
-    model = Listing
+    template_name = 'home/index.html'
+    context_object_name = 'all_listings'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Listing.objects.all()
 
 def home(request):
     return render(request, "home.html",{})

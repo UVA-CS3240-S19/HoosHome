@@ -1,3 +1,8 @@
+deploy:
+  provider: heroku
+  api_key: _w#5(y!bx$u9kr2a8rg!r3!l_+o92&1p(y*bc599kf^wg*0mdn
+  app: hooshome
+
 language: python
 python: 
   - "3.7.2" 
@@ -5,4 +10,4 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script:
-  - pytest
+  - python3 manage.py test

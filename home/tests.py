@@ -11,7 +11,7 @@ from .models import Users
 
 class LoginTest(TestCase):
     def setUp(self):
-        Users.objects.create(username='cavman', password='uva123')
+         return Users.objects.create(username='cavman', password='uva123')
 
     def test_animals_can_speak(self):
         """User can be created"""

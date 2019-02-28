@@ -56,7 +56,37 @@
             <input type="submit" value="Login" class="btn float-right login_btn">
           </div>
         </form>
+        <html>
+<head>
+  <meta name="google-signin-client_id" content="627932618213-6oiauv9toareadjoro20t0uu765081fi.apps.googleusercontent.com">
+</head>
+<body>
+  <div id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+</html>
       </div>
+      
       <div class="card-footer">
         <div class="d-flex justify-content-center links">
           Don't have an account?<a href="../../signup">Sign Up</a>

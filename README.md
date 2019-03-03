@@ -6,7 +6,7 @@
     * Neal Chen
     * Farhan Khan
 * Requirements Manager: Wade Hisiro
-* Testing Manager: Jeffrey Gerkin
+* Testing Manager: Jeffrey Gerken
 * Configurations Manager: Tanner Dellett-Wion
 
 # Website: https://hooshome.herokuapp.com/

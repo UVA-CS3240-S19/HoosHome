@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView, ListView
-from .forms import SignUpForm
+from .forms import SignUpForm, SearchForm
 from .models import Listing
 
 class ListingCreateView(CreateView):
@@ -15,6 +15,19 @@ class ListingList(ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         return Listing.objects.all()
+
+def search(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            try:
+                status = Listing.objects.filter(address__icontains = form.cleaned_data.get("search_text")) # filter returns a list so you might consider skip except part
+            except:
+                return render(request, "home/search_results.html", {'form': form})
+        return render(request,"home/search_results.html",{"filter":status,'form': form})
+    else:
+        form = SearchForm()
+        return render(request,"home/search_results.html",{'form': form})
 
 def home(request):
     return render(request, "home.html",{})

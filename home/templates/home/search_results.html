@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+<main role="main">
+    <link rel="stylesheet" type="text/css" href="../../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Listings example</h1>
+          <p class="lead text-muted">HOOS HOME</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">START ANOTHER APARTMENT SEARCH</a>
+            <a href="#" class="btn btn-secondary my-2">GO BACK</a>
+          </p>
+        </div>
+      </section>
+    {% if filter %}
+      <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+          {% for choice in filter %}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'images/gmarc.jpg'%}" alt="Card image cap">
+                <div class="card-body">
+
+                    <h5 class="jumbotron-heading">{{choice.address}}</h5>
+                    <span class="heading">User Rating</span>
+                    <span class="fa fa-star {% if choice.ratings > 1 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 2 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 3 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 4 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 5 %}checked{% endif %}"></span>
+                  <p class="card-text">{{choice.description}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+
+                    <div class="btn-group">
+
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Contact Property</button>
+                    </div>
+                      <small class="text-muted">{{choice.bedsbaths}}</small>
+                    <small class="text-muted">${{choice.price}}/Month</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+
+
+
+          </div>
+        </div>
+      </div>
+    {% else %}
+     <h5 class="jumbotron-heading">NO RESULTS FOUND</h5>
+    {% endif %}
+
+    </main>
+{% endblock %}

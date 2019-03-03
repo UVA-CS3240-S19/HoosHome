@@ -11,4 +11,4 @@ install:
   - pip install social-auth-app-django
 # command to run tests
 script:
-  - python3 manage.py test home
+  - python manage.py test home

@@ -14,7 +14,6 @@ import os
 try:
     # Configure Django App for Heroku.
     import django_heroku
-    django_heroku.settings(locals())
 except ImportError:
     found = False
 
@@ -139,6 +138,10 @@ EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 # Activate Django-Heroku.
+try:
+    django_heroku.settings(locals())
+except: ImportError
+    
 #client id /secret for google api
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '627932618213-6oiauv9toareadjoro20t0uu765081fi.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'rpzKr6HOtAarO62oLxcB5PLv'

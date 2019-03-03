@@ -8,10 +8,12 @@ from django.utils import timezone
 from django.urls import reverse
 
 from .models import Users, Listing
+
 class LoginTest(TestCase):
     def testUserPass(self):
         cavman = Users(username='cavman',password='uva12345')
         self.assertEqual(cavman.username, 'cavman')
+        
 class ListingTest(TestCase):
     def testFutureListing(self):
         time = timezone.now() + datetime.timedelta(days=30)

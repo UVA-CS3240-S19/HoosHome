@@ -34,6 +34,12 @@ class ListingTest(TestCase):
         time = timezone.now() - datetime.timedelta(hours=49)
         recent_question = Listing(pub_date=time)
         self.assertIs(recent_question.published_recently(), True)
+    def testSetAddress(self):
+        temp = Listing(address="123 Conch Lane")
+        self.assertEqual(temp.address, "123 Conch Lane")
+    def testAddressString(self):
+        temp = Listing(address="Banana Street")
+        self.assertEqual(temp.__str__(), "Banana Street")
 
 
 

@@ -1,14 +1,13 @@
 deploy:
   provider: heroku
-  api_key: _w#5(y!bx$u9kr2a8rg!r3!l_+o92&1p(y*bc599kf^wg*0mdn
+  api_key:
+    secure: 13067db5-58c9-4349-b1fa-4514836a7701
   app: hooshome
-
 language: python
-python: 
-  - "3.6.1" 
+python:
+- 3.6.1
 install:
-  - pip install -r requirements-build.txt
-  - pip install social-auth-app-django
-# command to run tests
+- pip install -r requirements-build.txt
+- pip install social-auth-app-django
 script:
-  - python manage.py test home
+- python manage.py test home

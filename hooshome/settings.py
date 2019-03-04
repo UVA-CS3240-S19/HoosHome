@@ -109,8 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    # 'social_core.backend.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.google.GoogleOAuth2',
 )
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

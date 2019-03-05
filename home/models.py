@@ -9,10 +9,12 @@ class Listing(models.Model):
     address = models.CharField(max_length=200)
     realtor_agent = models.CharField(max_length=200)
     description = models.TextField()
-    price = models.IntegerField(default=0)
+    bedsbaths = models.CharField(max_length=200, default="2B/2B")
+    price = models.IntegerField(default=200)
+    ratings = models.IntegerField(default=4)
 
     def __str__(self):
-        return self.address
+        return str(self.address)  + " for " + str(self.price) + "\nDescription: " + str(self.description)
 
     def published_recently(self):
         now = timezone.now()

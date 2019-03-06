@@ -62,9 +62,19 @@
 </head>
 <body>
   <div id="my-signin2"></div>
+  
   <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      window.location.href = '../../';
+      //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      //console.log('Name: ' + profile.getName());
+      //console.log('Image URL: ' + profile.getImageUrl());
+      //console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+
     function onSuccess(googleUser) {
-      //window.location.href = '../../'
+      
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     }
     function onFailure(error) {
@@ -84,6 +94,8 @@
   </script>
 
   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+  
 </body>
 </html>
       </div>

@@ -63,8 +63,9 @@
 <body>
   <div id="my-signin2"></div>
   <script>
+    {{form.googleUser}}
     function onSuccess(googleUser) {
-      //window.location.href = '../../'
+      window.location.href = '../../'
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     }
     function onFailure(error) {

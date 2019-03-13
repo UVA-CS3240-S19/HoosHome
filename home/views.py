@@ -13,7 +13,7 @@ class ListingList(ListView):
     context_object_name = 'all_listings'
 
     def get_queryset(self):
-        """Return the last five published questions."""
+        """Returns recently published listings."""
         return Listing.objects.all()
 
 def search(request):

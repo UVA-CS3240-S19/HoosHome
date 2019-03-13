@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'crispy_forms',
     'django.contrib.admin',
@@ -82,7 +81,6 @@ WSGI_APPLICATION = 'hooshome.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -93,7 +91,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -113,9 +110,9 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -129,8 +126,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_URL = '/static/'
+
 # Google login url
 LOGIN_URL = '/auth/login/google-oauth2'
 LOGIN_REDIRECT_URL = '/'
@@ -147,5 +144,4 @@ except:
 # client id /secret for google api
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '627932618213-6oiauv9toareadjoro20t0uu765081fi.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'rpzKr6HOtAarO62oLxcB5PLv'
-
 SOCIAL_AUTH_URL_NAMESPACE = 'social'

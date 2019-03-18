@@ -9,9 +9,11 @@ class Listing(models.Model):
     address = models.CharField(max_length=200)
     realtor_agent = models.CharField(max_length=200)
     description = models.TextField()
-    bedsbaths = models.CharField(max_length=200, default="2B/2B")
-    price = models.IntegerField(default=200)
-    ratings = models.IntegerField(default=4)
+    beds = models.IntegerField()
+    baths = models.IntegerField()
+    #bedsbaths = models.CharField(max_length=200, default="2B/2B")
+    price = models.IntegerField()
+    ratings = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.address)  + " for " + str(self.price) + "\nDescription: " + str(self.description)

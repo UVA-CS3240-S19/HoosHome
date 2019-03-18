@@ -7,6 +7,8 @@ from .models import Listing
 class ListingCreateView(CreateView):
     model = Listing
     fields = ('pub_date', 'address', 'realtor_agent', 'description', 'price')
+    def form_valid(self, form):
+        return redirect('/listings')
 
 class ListingList(ListView):
     template_name = 'home/index.html'

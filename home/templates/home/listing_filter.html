@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="../../static/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!DOCTYPE html><html class=''>
+<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/SitePoint/pen/doyXqB?q=uikit&limit=all&type=type-pens" />
+
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/css/uikit.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/css/components/sticky.min.css'>
+<style class="cp-pen-styles">/*
+NOTE: Only the first item has the modal overlay functionality
+*/
+
+/* This is to override a bizarre line in UIkit's navbar styles */
+.uk-navbar-nav>li>a[href='#'] {
+  cursor: pointer;
+}
+</style></head><body>
+<nav data-uk-sticky id="items" class="uk-navbar">
+  <label class="uk-navbar-content uk-hidden-small">Filter:</label>
+  <ul class="uk-navbar-nav uk-hidden-small">
+    <li data-uk-filter="" class="uk-active"><a href="#">ALL</a></li>
+  </ul>
+
+  <label class="uk-navbar-content uk-hidden-small">Sort:</label>
+  <ul class="uk-navbar-nav uk-hidden-small">
+    <li data-uk-sort="numbers"><a href="#">Price <i class="uk-icon-sort-asc"></i></a></li>
+    <li data-uk-sort="numbers:desc"><a href="#">Price <i class="uk-icon-sort-desc"></i></a></li>
+	  <li data-uk-sort="rating"><a href="#">Rating <i class="uk-icon-sort-numeric-asc"></i></a></li>
+	  <li data-uk-sort="rating:desc"><a href="#">Rating <i class="uk-icon-sort-numeric-desc"></i></a></li>
+    <li data-uk-sort="letters"><a href="#">Name <i class="uk-icon-sort-alpha-asc"></i></a></li>
+    <li data-uk-sort="letters:desc"><a href="#">Name <i class="uk-icon-sort-alpha-desc"></i></a></li>
+  </ul>
+  <div data-uk-dropdown="{mode:'click'}">
+    <a href="#" class="uk-navbar-toggle uk-visible-small"></a>
+    <div class="uk-dropdown uk-dropdown-navbar">
+      <ul class="uk-nav uk-nav-navbar">
+        <li class="uk-nav-header">Filter:</li>
+        <li data-uk-filter="" class="uk-active"><a href="#">ALL</a></li>
+        <li data-uk-filter="blue"><a href="#">BLUE</a></li>
+        <li data-uk-filter="green"><a href="#">GREEN</a></li>
+        <li class="uk-nav-divider"></li>
+      </ul>
+      <ul class="uk-nav uk-nav-navbar">
+        <li class="uk-nav-header">Sort:</li>
+        <li data-uk-sort="numbers"><a href="#">NUMBERS <i class="uk-icon-sort-numeric-asc"></i></a></li>
+        <li data-uk-sort="numbers:desc"><a href="#">NUMBERS <i class="uk-icon-sort-numeric-desc"></i></a></li>
+        <li data-uk-sort="letters"><a href="#">LETTERS <i class="uk-icon-sort-alpha-asc"></i></a></li>
+        <li data-uk-sort="letters:desc"><a href="#">LETTERS <i class="uk-icon-sort-alpha-desc"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="uk-container uk-container-center uk-margin-top">
+
+  <div class="uk-grid-width-small-1-1 uk-grid-width-medium-1-4" data-uk-grid="{gutter: 20, controls: '#items', duration: 500}">
+
+
+
+
+	  	   {% for choice in all_listings %}
+            <div class="col-md-4" data-numbers={{choice.price}} data-letters={{choice.address}} data-rating={{choice.ratings}}>
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'images/gmarc.jpg'%}" alt="Card image cap">
+                <div class="card-body">
+
+                    <h5 class="jumbotron-heading">{{choice.address}}</h5>
+                    <span class="heading">User Rating</span>
+                    <span class="fa fa-star {% if choice.ratings > 0 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 1 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 2 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 3 %}checked{% endif %}"></span>
+                    <span class="fa fa-star {% if choice.ratings > 4 %}checked{% endif %}"></span>
+                  <p class="card-text">{{choice.description}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+
+                    <div class="btn-group">
+
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Contact Property</button>
+                    </div>
+                      <small class="text-muted">{{choice.bedsbaths}}</small>
+                    <small class="text-muted">${{choice.price}}/Month</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+  </div>
+</div>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/js/uikit.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/js/components/grid.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/js/components/sticky.min.js'></script>
+<script >// See:
+// http://www.sitepoint.com/building-responsive-portfolio-uikit
+//# sourceURL=pen.js
+</script>
+</body></html>
+{% endblock %}

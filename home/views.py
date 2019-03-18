@@ -16,6 +16,17 @@ class ListingList(ListView):
         """Returns recently published listings."""
         return Listing.objects.all()
 
+class ListingListFilter(ListView):
+    template_name = 'home/listing_filter.html'
+    context_object_name = 'all_listings'
+
+    def get_queryset(self):
+        """Returns recently published listings."""
+        return Listing.objects.all()
+
+def test(request):
+    return render(request, "home/listing_filter_test.html",{})
+
 def search(request):
     if request.method == 'POST':
         form = SearchForm(request.POST)

@@ -6,7 +6,7 @@ from .models import Listing
 
 class ListingCreateView(CreateView):
     model = Listing
-    fields = ('pub_date', 'address', 'realtor_agent', 'description', 'price')
+    fields = ('pub_date', 'address', 'realtor_agent','description', 'price', 'beds','baths')
     def form_valid(self, form):
         return redirect('/listings')
 

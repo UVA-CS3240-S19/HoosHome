@@ -39,13 +39,3 @@ class ListingTest(TestCase):
     def testAddressString(self):
         temp = Listing(address="Banana Street")
         self.assertEqual(temp.__str__(), "Banana Street")
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
->>>>>>> master
->>>>>>> listings

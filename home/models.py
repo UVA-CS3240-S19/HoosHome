@@ -13,6 +13,8 @@ class Listing(models.Model):
     price = models.IntegerField(default=200)
     ratings = models.IntegerField(default=4)
 
+
+
     def __str__(self):
         return str(self.address)  + " for " + str(self.price) + "\nDescription: " + str(self.description)
 

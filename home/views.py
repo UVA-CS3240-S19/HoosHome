@@ -24,8 +24,6 @@ class ListingListFilter(ListView):
         """Returns recently published listings."""
         return Listing.objects.all()
 
-def test(request):
-    return render(request, "home/listing_filter_test.html",{})
 
 def search(request):
     if request.method == 'POST':

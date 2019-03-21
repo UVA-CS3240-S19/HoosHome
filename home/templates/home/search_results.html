@@ -35,11 +35,11 @@
 
                     <h5 class="jumbotron-heading">{{choice.address}}</h5>
                     <span class="heading">User Rating</span>
+                    <span class="fa fa-star {% if choice.ratings > 0 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 1 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 2 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 3 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 4 %}checked{% endif %}"></span>
-                    <span class="fa fa-star {% if choice.ratings > 5 %}checked{% endif %}"></span>
                   <p class="card-text">{{choice.description}}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">

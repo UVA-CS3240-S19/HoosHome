@@ -19,20 +19,26 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://github.com/UVA-CS3240-S19/project-102-nautilus">Github</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Options
+                  Buy
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="listings">Buy</a>
+                  <a class="dropdown-item" href="/listings">Buy</a>
                   <a class="dropdown-item" href="#">Rent</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="createlisting">Sell</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sell
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/createlisting">Sell</a>
                   <a class="dropdown-item" href="#">Sublet</a>
                 </div>
               </li>
@@ -45,16 +51,16 @@
               <ul class="navbar-nav navbar-right">
 
                 <li class="nav-item">
-                  <a class="nav-link" href="accounts/logout">Logout</a></li>
+                  <a class="nav-link" href="/accounts/logout">Logout</a></li>
                 </li>
               </ul>
             {% else %}
               <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
-                  <a class="nav-link" href="signup">Sign Up</a></li>
+                  <a class="nav-link" href="/signup">Sign Up</a></li>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="accounts/login">Login</a></li>
+                  <a class="nav-link" href="/accounts/login">Login</a></li>
                 </li>
             {% endif %}
             </ul>

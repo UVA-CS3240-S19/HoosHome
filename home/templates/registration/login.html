@@ -62,10 +62,24 @@
 </head>
 <body>
   <div id="my-signin2"></div>
+  
   <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      window.location.href = '../../';
+      //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      //console.log('Name: ' + profile.getName());
+      //console.log('Image URL: ' + profile.getImageUrl());
+      //console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+
     function onSuccess(googleUser) {
+<<<<<<< HEAD
       //window.location.href = '../../'
       // redirect home if login is successful
+=======
+      
+>>>>>>> c48f39c0f11b13142bf0ad022583b9c8c03b1e0b
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
     }
     // <meta http-equiv="Refresh" content="0; url=https://hooshome.herokuapp.com/" />
@@ -86,6 +100,8 @@
   </script>
 
   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+  
 </body>
 </html>
       </div>

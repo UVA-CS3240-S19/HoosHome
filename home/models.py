@@ -7,6 +7,8 @@ from django.utils import timezone
 class Listing(models.Model):
     pub_date = models.DateTimeField('date published')
     address = models.CharField(max_length=200)
+    city = models.CharField(max_length=50,default="Charlottesville")
+    zip = models.CharField("ZIP / Postal code", max_length=12,default=22903)
     realtor_agent = models.CharField(max_length=200)
     description = models.TextField()
     beds = models.IntegerField()

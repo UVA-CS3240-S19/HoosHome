@@ -60,49 +60,11 @@
 <head>
   <meta name="google-signin-client_id" content="627932618213-6oiauv9toareadjoro20t0uu765081fi.apps.googleusercontent.com">
 </head>
-<body>
-  <div id="my-signin2"></div>
-  
-  <script>
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      window.location.href = '../../';
-      //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      //console.log('Name: ' + profile.getName());
-      //console.log('Image URL: ' + profile.getImageUrl());
-      //console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    }
-
-    function onSuccess(googleUser) {
-<<<<<<< HEAD
-      //window.location.href = '../../'
-      // redirect home if login is successful
-=======
-      
->>>>>>> c48f39c0f11b13142bf0ad022583b9c8c03b1e0b
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    // <meta http-equiv="Refresh" content="0; url=https://hooshome.herokuapp.com/" />
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
-
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
-  
-</body>
+<form method="POST">
+  <a href="{% url 'social:begin' 'google-oauth2' %">
+      <button type="button" name="google-auth-button">Google</button></button>
+  </a>
+</form>
 </html>
       </div>
       

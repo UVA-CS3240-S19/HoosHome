@@ -26,6 +26,21 @@ class ListingListFilter(ListView):
         """Returns recently published listings."""
         return Listing.objects.all()
 
+def MajorSearch(request):
+    if request.method == 'POST':
+        print("post")
+        print(request.POST)
+        # form = SearchForm(request.POST)
+        # if form.is_valid():
+        #     try:
+        #         status = Listing.objects.filter(address__icontains = form.cleaned_data.get("search_text")) # filter returns a list so you might consider skip except part
+        #     except:
+        #         return render(request, "home/search_results.html", {'form': form})
+        # return render(request,"home/search_results.html",{"filter":status,'form': form})
+    # else:
+    #     form = SearchForm()
+    #     return render(request,"home/search_results.html",{'form': form})
+    return render(request,"home/listing_list.html")
 
 def search(request):
     if request.method == 'POST':
@@ -42,6 +57,12 @@ def search(request):
 
 def home(request):
     return render(request, "home.html",{})
+
+def simpleFilter(request):
+    return render(request, "home/search_with_simple.html",{})
+
+def testone(request):
+    return render(request, "home/listing_filter.html",{})
 
 def gitlink(request):
     link = redirect('https://github.com/UVA-CS3240-S19/project-102-nautilus')

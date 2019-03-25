@@ -2,66 +2,258 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="../../static/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
 
 <form action="" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Submit">
 </form>
-<main role="main">
-    <link rel="stylesheet" type="text/css" href="../../static/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Listings example</h1>
-          <p class="lead text-muted">HOOS HOME</p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">START ANOTHER APARTMENT SEARCH</a>
-            <a href="#" class="btn btn-secondary my-2">GO BACK</a>
-          </p>
-        </div>
-      </section>
-    {% if filter %}
-      <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
-          {% for choice in filter %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{% static 'images/gmarc.jpg'%}" alt="Card image cap">
-                <div class="card-body">
 
-                    <h5 class="jumbotron-heading">{{choice.address}}</h5>
-                    <span class="heading">User Rating</span>
-                    <span class="fa fa-star {% if choice.ratings > 0 %}checked{% endif %}"></span>
-                    <span class="fa fa-star {% if choice.ratings > 1 %}checked{% endif %}"></span>
-                    <span class="fa fa-star {% if choice.ratings > 2 %}checked{% endif %}"></span>
-                    <span class="fa fa-star {% if choice.ratings > 3 %}checked{% endif %}"></span>
-                    <span class="fa fa-star {% if choice.ratings > 4 %}checked{% endif %}"></span>
-                  <p class="card-text">{{choice.description}}</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Contact Property</button>
-                    </div>
-                      <small class="text-muted">{{choice.beds}}</small>
-                    <small class="text-muted">${{choice.price}}/Month</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
+<div class="container">
+<br>
+<hr>
+
+<div class="row">
+	<aside class="col-sm-4">
+<p>Filter 1</p>
 
 
-          </div>
-        </div>
-      </div>
-    {% else %}
-     <h5 class="jumbotron-heading">NO RESULTS FOUND</h5>
-    {% endif %}
+<div class="card">
+    <article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Search </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+			<form>
+            {% csrf_token %}
+            {{ form }}
+			</form>
 
-    </main>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+	<article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Brands </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+			<form>
+				<label class="form-check">
+				  <input class="form-check-input" type="checkbox" value="">
+				  <span class="form-check-label">
+				    Mersedes Benz
+				  </span>
+				</label> <!-- form-check.// -->
+				<label class="form-check">
+				  <input class="form-check-input" type="checkbox" value="">
+				  <span class="form-check-label">
+				    Nissan Altima
+				  </span>
+				</label>  <!-- form-check.// -->
+				<label class="form-check">
+				  <input class="form-check-input" type="checkbox" value="">
+				  <span class="form-check-label">
+				    Another Brand
+				  </span>
+				</label>  <!-- form-check.// -->
+			</form>
+
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+    <article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Range input </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+			<div class="form-row">
+			<div class="form-group col-md-6">
+			  <label>Min</label>
+			  <input type="number" class="form-control" id="inputEmail4" placeholder="$0">
+			</div>
+			<div class="form-group col-md-6 text-right">
+			  <label>Max</label>
+			  <input type="number" class="form-control" placeholder="$1,0000">
+			</div>
+			</div>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+
+	<article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Choose type </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+			<label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    First hand items
+			  </span>
+			</label>
+			<label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    Brand new items
+			  </span>
+			</label>
+			<label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    Some other option
+			  </span>
+			</label>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+    <article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Beds</h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+			<label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    1 Bed
+			  </span>
+			</label>
+			<label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    2 Beds
+			  </span>
+			</label>
+			<label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    3 Beds
+			  </span>
+			</label>
+                <label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    4 Beds
+			  </span>
+			</label>
+                <label class="form-check">
+			  <input class="form-check-input" type="radio" name="exampleRadio" value="">
+			  <span class="form-check-label">
+			    4+ Beds
+			  </span>
+			</label>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+</div> <!-- card.// -->
+
+
+
+
+	</aside> <!-- col.// -->
+	<aside class="col-sm-4">
+<p>Filter 2</p>
+
+
+<div class="card">
+	<article class="card-group-item">
+		<header class="card-header"><h6 class="title">Similar category </h6></header>
+		<div class="filter-content">
+			<div class="list-group list-group-flush">
+			  <a href="#" class="list-group-item">Cras justo odio <span class="float-right badge badge-light round">142</span> </a>
+			  <a href="#" class="list-group-item">Dapibus ac facilisis  <span class="float-right badge badge-light round">3</span>  </a>
+			  <a href="#" class="list-group-item">Morbi leo risus <span class="float-right badge badge-light round">32</span>  </a>
+			  <a href="#" class="list-group-item">Another item <span class="float-right badge badge-light round">12</span>  </a>
+			</div>  <!-- list-group .// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+	<article class="card-group-item">
+		<header class="card-header"><h6 class="title">Color check</h6></header>
+		<div class="filter-content">
+			<div class="card-body">
+				<label class="btn btn-danger">
+				  <input class="" type="checkbox" name="myradio" value="">
+				  <span class="form-check-label">Red</span>
+				</label>
+				<label class="btn btn-success">
+				  <input class="" type="checkbox" name="myradio" value="">
+				  <span class="form-check-label">Green</span>
+				</label>
+				<label class="btn btn-primary">
+				  <input class="" type="checkbox" name="myradio" value="">
+				  <span class="form-check-label">Blue</span>
+				</label>
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+</div> <!-- card.// -->
+
+
+
+	</aside> <!-- col.// -->
+	<aside class="col-sm-4">
+<p>Filter  3</p>
+
+
+
+<div class="card">
+
+	<article class="card-group-item">
+		<header class="card-header">
+			<h6 class="title">Selection </h6>
+		</header>
+		<div class="filter-content">
+			<div class="card-body">
+				<div class="custom-control custom-checkbox">
+					<span class="float-right badge badge-light round">52</span>
+				  	<input type="checkbox" class="custom-control-input" id="Check1">
+				  	<label class="custom-control-label" for="Check1">Samsung</label>
+				</div> <!-- form-check.// -->
+
+				<div class="custom-control custom-checkbox">
+					<span class="float-right badge badge-light round">132</span>
+				  	<input type="checkbox" class="custom-control-input" id="Check2">
+				 	<label class="custom-control-label" for="Check2">Black berry</label>
+				</div> <!-- form-check.// -->
+
+				<div class="custom-control custom-checkbox">
+					<span class="float-right badge badge-light round">17</span>
+				  	<input type="checkbox" class="custom-control-input" id="Check3">
+				  	<label class="custom-control-label" for="Check3">Samsung</label>
+				</div> <!-- form-check.// -->
+
+				<div class="custom-control custom-checkbox">
+					<span class="float-right badge badge-light round">7</span>
+				  	<input type="checkbox" class="custom-control-input" id="Check4">
+				  	<label class="custom-control-label" for="Check4">Other Brand</label>
+				</div> <!-- form-check.// -->
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- card-group-item.// -->
+</div> <!-- card.// -->
+
+
+
+	</aside> <!-- col.// -->
+</div> <!-- row.// -->
+
+</div>
+<!--container end.//-->
+
+
 {% endblock %}

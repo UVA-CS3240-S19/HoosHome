@@ -5,101 +5,79 @@
 <!-- Code template from https://bootsnipp.com/snippets/vl4R7 -->
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Login Page</title>
-   <!--Made with love by Mutiullah Samim -->
-   
+  <!--Made with love by Mutiullah Samim -->
+
   <!--Bootsrap 4 CDN-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!--Fontawesome CDN-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
   <!--Custom styles-->
   <!-- <link rel="stylesheet" type="text/css" href="../../static/loginStyle.css"> -->
 </head>
-<body>
-<div class="container">
-  <div class="d-flex justify-content-center h-100">
-    <div class="card">
-      <div class="card-header">
-        <h3>Sign In</h3>
-        <div class="d-flex justify-content-end social_icon">
-          <span><i class="fab fa-google-plus-square"></i></span>
-        </div>
-      </div>
-      <div class="card-body">
-        <form method="post">
-          {% csrf_token %}
-          <div class="group">
-            <label for="{{ form.username.id_for_label }}" class="label">Username</label>
-          </div>
-          <div class="input-group form-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-            </div>
-            {{form.username}}
-            <!--<input type="text" class="form-control" value={{form.username.value}} placeholder="username"> -->
-            
-          </div>
-          <div class="group">
-            <label for="{{ form.password.id_for_label }}" class="label">Password</label>
-          </div>
-          <div class="input-group form-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-key"></i></span>
-            </div>
-            {{form.password}}
-            <!--<input type="password" class="form-control" placeholder="password"> -->
-          </div>
-          <div class="form-group">
-            <input type="submit" value="Login" class="btn float-right login_btn">
-          </div>
-        </form>
-        <html>
-<head>
-  <meta name="google-signin-client_id" content="627932618213-6oiauv9toareadjoro20t0uu765081fi.apps.googleusercontent.com">
-</head>
-<body>
-  <div id="my-signin2"></div>
-  <script>
-    function onSuccess(googleUser) {
-      //window.location.href = '../../'
-      // redirect home if login is successful
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    // <meta http-equiv="Refresh" content="0; url=https://hooshome.herokuapp.com/" />
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-  </script>
 
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">
+          <h3>Sign In</h3>
+          <div class="d-flex justify-content-end social_icon">
+            <span><i class="fab fa-google-plus-square"></i></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="group">
+              <label for="{{ form.username.id_for_label }}" class="label">Username</label>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              {{form.username}}
+              <!--<input type="text" class="form-control" value={{form.username.value}} placeholder="username"> -->
+
+            </div>
+            <div class="group">
+              <label for="{{ form.password.id_for_label }}" class="label">Password</label>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              {{form.password}}
+              <!--<input type="password" class="form-control" placeholder="password"> -->
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Login" class="btn float-right login_btn">
+            </div>
+          </form>
+          <html>
+          <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
 </body>
+
 </html>
-      </div>
-      
-      <div class="card-footer">
-        <div class="d-flex justify-content-center links">
-          Don't have an account?<a href="../../signup">Sign Up</a>
-        </div>
-        <div class="d-flex justify-content-center">
-          <a href="{% url 'password_reset' %}">Forgot your password?</a>
-        </div>
-      </div>
-    </div>
+</div>
+
+<div class="card-footer">
+  <div class="d-flex justify-content-center links">
+    Don't have an account?<a href="../../signup">Sign Up</a>
+  </div>
+  <div class="d-flex justify-content-center">
+    <a href="{% url 'password_reset' %}">Forgot your password?</a>
   </div>
 </div>
+</div>
+</div>
+</div>
 </body>
+
 </html>

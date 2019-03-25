@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 
 # Google login url
 LOGIN_URL = '/auth/login/google-oauth2'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

@@ -60,11 +60,33 @@
 <head>
   <meta name="google-signin-client_id" content="627932618213-6oiauv9toareadjoro20t0uu765081fi.apps.googleusercontent.com">
 </head>
-<form method="POST">
-  <a href="{% url 'social:begin' 'google-oauth2' %">
-      <button type="button" name="google-auth-button">Google</button></button>
-  </a>
-</form>
+<body>
+  <div id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      //window.location.href = '../../'
+      // redirect home if login is successful
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    // <meta http-equiv="Refresh" content="0; url=https://hooshome.herokuapp.com/" />
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
 </html>
       </div>
       

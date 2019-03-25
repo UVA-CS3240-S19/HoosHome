@@ -2,77 +2,146 @@
 
 {% block content %}
 {% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 <link rel="stylesheet" type="text/css" href="../../static/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
+<!DOCTYPE html>
+<html>
+<head>
 
-<!DOCTYPE html><html class=''>
-<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/SitePoint/pen/doyXqB?q=uikit&limit=all&type=type-pens" />
+  <title></title>
+</head>
+<body>
+<style>
+* { box-sizing: border-box; }
 
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/css/uikit.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/css/components/sticky.min.css'>
-<style class="cp-pen-styles">/*
-NOTE: Only the first item has the modal overlay functionality
-*/
+body {
+  font-family: sans-serif;
+}
 
-/* This is to override a bizarre line in UIkit's navbar styles */
-.uk-navbar-nav>li>a[href='#'] {
+/* ---- button ---- */
+
+.button {
+  display: inline-block;
+  padding: 0.5em 1.0em;
+  background: #EEE;
+  border: none;
+  border-radius: 7px;
+  background-image: linear-gradient( to bottom, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.2) );
+  color: #222;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-shadow: 0 1px white;
   cursor: pointer;
 }
-</style></head><body>
-<nav data-uk-sticky id="items" class="uk-navbar">
-  <label class="uk-navbar-content uk-hidden-small">Filter:</label>
-  <ul class="uk-navbar-nav uk-hidden-small">
-    <li data-uk-filter="" class="uk-active"><a href="#">ALL</a></li>
-  </ul>
 
-  <label class="uk-navbar-content uk-hidden-small">Sort:</label>
-  <ul class="uk-navbar-nav uk-hidden-small">
-    <li data-uk-sort="numbers"><a href="#">Price <i class="uk-icon-sort-asc"></i></a></li>
-    <li data-uk-sort="numbers:desc"><a href="#">Price <i class="uk-icon-sort-desc"></i></a></li>
-	  <li data-uk-sort="rating"><a href="#">Rating <i class="uk-icon-sort-numeric-asc"></i></a></li>
-	  <li data-uk-sort="rating:desc"><a href="#">Rating <i class="uk-icon-sort-numeric-desc"></i></a></li>
-    <li data-uk-sort="letters"><a href="#">Name <i class="uk-icon-sort-alpha-asc"></i></a></li>
-    <li data-uk-sort="letters:desc"><a href="#">Name <i class="uk-icon-sort-alpha-desc"></i></a></li>
-  </ul>
-  <div data-uk-dropdown="{mode:'click'}">
-    <a href="#" class="uk-navbar-toggle uk-visible-small"></a>
-    <div class="uk-dropdown uk-dropdown-navbar">
-      <ul class="uk-nav uk-nav-navbar">
-        <li class="uk-nav-header">Filter:</li>
-        <li data-uk-filter="" class="uk-active"><a href="#">ALL</a></li>
-        <li data-uk-filter="blue"><a href="#">BLUE</a></li>
-        <li data-uk-filter="green"><a href="#">GREEN</a></li>
-        <li class="uk-nav-divider"></li>
-      </ul>
-      <ul class="uk-nav uk-nav-navbar">
-        <li class="uk-nav-header">Sort:</li>
-        <li data-uk-sort="numbers"><a href="#">NUMBERS <i class="uk-icon-sort-numeric-asc"></i></a></li>
-        <li data-uk-sort="numbers:desc"><a href="#">NUMBERS <i class="uk-icon-sort-numeric-desc"></i></a></li>
-        <li data-uk-sort="letters"><a href="#">LETTERS <i class="uk-icon-sort-alpha-asc"></i></a></li>
-        <li data-uk-sort="letters:desc"><a href="#">LETTERS <i class="uk-icon-sort-alpha-desc"></i></a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+.button:hover {
+  background-color: #8CF;
+  text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
+  color: #222;
+}
 
-<div class="uk-container uk-container-center uk-margin-top">
+.button:active,
+.button.is-checked {
+  background-color: #28F;
+}
 
-  <div class="uk-grid-width-small-1-1 uk-grid-width-medium-1-4" data-uk-grid="{gutter: 20, controls: '#items', duration: 500}">
+.button.is-checked {
+  color: white;
+  text-shadow: 0 -1px hsla(0, 0%, 0%, 0.8);
+}
+
+.button:active {
+  box-shadow: inset 0 1px 10px hsla(0, 0%, 0%, 0.8);
+}
+
+/* ---- button-group ---- */
+
+.button-group {
+  margin-bottom: 20px;
+}
+
+.button-group:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.button-group .button {
+  float: left;
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 1px;
+}
+
+.button-group .button:first-child { border-radius: 0.5em 0 0 0.5em; }
+.button-group .button:last-child { border-radius: 0 0.5em 0.5em 0; }
+
+/* ---- isotope ---- */
+
+.grid {
+  border: 1px solid #333;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .element-item ---- */
+
+.element-item {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 600px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.element-item > * {
+  margin: 0;
+  padding: 0;
+}
 
 
 
 
-	  	   {% for choice in all_listings %}
-            <div class="col-md-4" data-numbers={{choice.price}} data-letters={{choice.address}} data-rating={{choice.ratings}}>
+</style>
+<h1>Filtering &amp; sorting</h1>
+<h2>Filter(not implemented)</h2>
+<div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
+  <button class="button" data-filter=".metal">with gym</button>
+  <button class="button" data-filter=".transition">more than 3 stars</button>
+  <button class="button" data-filter=".alkali, .alkaline-earth">2B2B</button>
+  <button class="button" data-filter=":not(.transition)">on JPA</button>
+  <button class="button" data-filter=".metal:not(.transition)">cheaper than 500/month</button>
+  <button class="button" data-filter="numberGreaterThan50">studio</button>
+  <button class="button" data-filter="ium">xxxx</button>
+</div>
+
+<h2>Sort</h2>
+<div id="sorts" class="button-group">  <button class="button is-checked" data-sort-by="original-order">original order</button>
+  <button class="button" data-sort-by="name">Name</button>
+  <button class="button" data-sort-by="named">Name(Descending)</button>
+  <button class="button" data-sort-by="price">Price</button>
+  <button class="button" data-sort-by="priced">Price(Descending)</button>
+  <button class="button" data-sort-by="rating">Rating(not implemented)</button>
+    <button class="button" data-sort-by="rating">Rating</button>
+</div>
+
+<div class="grid">
+ {% for choice in all_listings %}
+            <div class="element-item post-transition metal " data-category="post-transition">
               <div class="card mb-4 box-shadow">
                 <img class="card-img-top" src="{% static 'images/gmarc.jpg'%}" alt="Card image cap">
                 <div class="card-body">
 
-                    <h5 class="jumbotron-heading">{{choice.address}}</h5>
+                    <h5 class="name jumbotron-heading">{{choice.address}}</h5>
                     <span class="heading">User Rating</span>
                     <span class="fa fa-star {% if choice.ratings > 0 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 1 %}checked{% endif %}"></span>
@@ -86,20 +155,81 @@ NOTE: Only the first item has the modal overlay functionality
 
                       <button type="button" class="btn btn-sm btn-outline-secondary">Contact Property</button>
                     </div>
-                      <small class="text-muted">{{choice.beds}}</small>
-                    <small class="text-muted">${{choice.price}}/Month</small>
+                      <small class="text-muted">{{choice.beds}}B/{{choice.baths}}B </small>
+                    <small class="price text-muted">${{choice.price}}/Month</small>
                   </div>
                 </div>
               </div>
             </div>
           {% endfor %}
-
-  </div>
 </div>
-<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/js/uikit.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/js/components/grid.min.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.18.0/js/components/sticky.min.js'></script>
-<script >// See:
-// http://www.sitepoint.com/building-responsive-portfolio-uikit
-//# sourceURL=pen.js
+
+
+<script>
+// external js: isotope.pkgd.js
+var $grid = $('.grid').isotope({
+  itemSelector: '.element-item',
+  layoutMode: 'fitRows',
+  sortAscending : {
+      name: true,
+      named: false,
+    price: true,
+    priced: false
+
+
+  },
+  getSortData: {
+    name: '.name',
+    named: '.name',
+    price: '.price',
+    priced: '.price'
+
+  }
+});
+
+// filter functions
+var filterFns = {
+  // show if number is greater than 50
+  numberGreaterThan50: function() {
+    var number = $(this).find('.number').text();
+    return parseInt( number, 10 ) > 50;
+  },
+  // show if name ends with -ium
+  ium: function() {
+    var name = $(this).find('.name').text();
+    return name.match( /ium$/ );
+  }
+};
+
+// bind filter button click
+$('#filters').on( 'click', 'button', function() {
+  var filterValue = $( this ).attr('data-filter');
+  // use filterFn if matches value
+  filterValue = filterFns[ filterValue ] || filterValue;
+  $grid.isotope({ filter: filterValue });
+});
+
+// bind sort button click
+$('#sorts').on( 'click', 'button', function() {
+  var sortByValue = $(this).attr('data-sort-by');
+  $grid.isotope({ sortBy: sortByValue });
+});
+
+// change is-checked class on buttons
+$('.button-group').each( function( i, buttonGroup ) {
+  var $buttonGroup = $( buttonGroup );
+  $buttonGroup.on( 'click', 'button', function() {
+    $buttonGroup.find('.is-checked').removeClass('is-checked');
+    $( this ).addClass('is-checked');
+  });
+});
+
+// init Isotope
+
+
+
 </script>
-</body></html>
+</body>
+</html>
 {% endblock %}
+

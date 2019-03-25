@@ -37,6 +37,3 @@ class ListingTest(TestCase):
     def testSetAddress(self):
         temp = Listing(address="123 Conch Lane")
         self.assertEqual(temp.address, "123 Conch Lane")
-    def testAddressString(self):
-        temp = Listing(address="Banana Street")
-        self.assertEqual(temp.__str__(), "Banana Street")

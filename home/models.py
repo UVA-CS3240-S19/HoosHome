@@ -1,23 +1,53 @@
 import datetime
-
+import json
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils import timezone
 
 # Create your models here.
 class Listing(models.Model):
-    pub_date = models.DateTimeField('date published')
-    address = models.CharField(max_length=200)
+
     #city = models.CharField(max_length=50,default="Charlottesville")
     #zip = models.CharField("ZIP / Postal code", max_length=12,default=22903)
-    realtor_agent = models.CharField(max_length=200)
-    description = models.TextField()
-    #beds = models.IntegerField()
-    #baths = models.IntegerField()
+
+
+
     #bedsbaths = models.CharField(max_length=200, default="2B/2B")
+
+    #Listing info
+    description = models.TextField()
+    pub_date = models.DateTimeField('date published')
+    address = models.CharField(max_length=200)
     price = models.IntegerField()
+    features =  models.CharField(max_length=50, default="[]")
+    beds = models.IntegerField(default=0)
+    baths = models.IntegerField(default=0)
+
+    #Use Json to store lists as strings
+    def set_features(self, x):
+        self.features = json.dumps(x)
+
+    def get_features(self):
+        return json.loads(self.features)
+
+
+    #Review info
     ratings = models.IntegerField(default=0)
+    number_of_ratings = models.IntegerField(default=0)
+    reviews = models.CharField(max_length=20000, default="[]")
+
+    # Use Json to store lists as strings
+    def set_review(self, x):
+        self.reviews = json.dumps(x)
+
+    def get_review(self):
+        return json.loads(self.reviews)
 
 
+    #Landlord info
+    realtor_agent = models.CharField(max_length=200)
+    realtor_site = models.CharField(max_length=200, default="google.com")
+    phone_number = models.CharField(max_length=15, default="999-999-9999")
 
     def __str__(self):
         return str(self.address)  + " for " + str(self.price) + "\nDescription: " + str(self.description)

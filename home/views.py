@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView, ListView
 from .forms import SignUpForm, SearchForm
 from .models import Listing
+from django.shortcuts import get_object_or_404
 
 
 class ListingCreateView(CreateView):
@@ -11,6 +12,7 @@ class ListingCreateView(CreateView):
 
     def form_valid(self, form):
         return redirect('/listings')
+
 
 
 class ListingList(ListView):
@@ -45,6 +47,9 @@ def search(request):
         form = SearchForm()
         return render(request, "home/search_results.html", {'form': form})
 
+def individual(request, listing_id):
+    listing = get_object_or_404(Listing, pk=listing_id)
+    return render(request, "home/listing_individual.html", {"listing": listing})
 
 def home(request):
     return render(request, "home.html", {})

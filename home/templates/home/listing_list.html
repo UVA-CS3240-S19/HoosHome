@@ -34,12 +34,14 @@
                     <span class="fa fa-star {% if choice.ratings > 2 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 3 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 4 %}checked{% endif %}"></span>
-                  <p class="card-text">{{choice.description}}</p>
+                  <p class="card-text">{{choice.description|slice:":200" }}......</p>
                   <div class="d-flex justify-content-between align-items-center">
 
                     <div class="btn-group">
+                    <a href="individual/{{choice.id}}">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" >Contact Property</button>
+                    </a>
 
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Contact Property</button>
                     </div>
                       <small class="text-muted">{{choice.beds}} Beds</small>
                       <small class="text-muted">{{choice.baths}} Baths</small>

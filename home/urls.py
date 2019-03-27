@@ -11,4 +11,5 @@ urlpatterns = [
     path('listings', views.ListingList.as_view(), name='listings'),
     path('filters', views.ListingListFilter.as_view(), name='filters'),
     path('search', views.search, name='search'),
+    path('individual/<int:listing_id>', views.individual, name='individual'),
 ]

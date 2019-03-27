@@ -149,12 +149,14 @@ body {
                     <span class="fa fa-star {% if choice.ratings > 2 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 3 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 4 %}checked{% endif %}"></span>
-                  <p class="card-text">{{choice.description}}</p>
+                  <p class="card-text">{{choice.description|slice:":200" }}......</p>
                   <div class="d-flex justify-content-between align-items-center">
 
                     <div class="btn-group">
 
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Contact Property</button>
+                     <a href="individual/{{choice.id}}">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" >Contact Property</button>
+                    </a>
                     </div>
                       <small class="text-muted">{{choice.beds}}B/{{choice.baths}}B </small>
                     <small class="price text-muted">${{choice.price}}/Month</small>

@@ -163,7 +163,52 @@
             <div class="card my-4">
                 <h5 class="card-header">Map</h5>
                 <div class="card-body">
-                    MAP HERE
+                        <style>
+                                #map {
+                                height: 400px;
+                                width: 300px;
+                                margin-left: auto;
+                                margin-right: auto;
+                                }
+                          /* Optional: Makes the sample page fill the window. */
+                                html, body {
+                                height: 100%;
+                                margin: 0;
+                                padding: 0;
+                                }
+                            </style>
+                    <div id = "map" ></div>
+                    <script>
+                        var geocoder;
+                        var map;
+                        var addy = '{{listing.address}}';
+                        function initMap() {
+                            var geocoder = new google.maps.Geocoder();
+                            var latlng = new google.maps.LatLng(38.0336, -78.5080);
+                            var mapOptions = {
+                                zoom: 14,
+                                center: latlng
+                            }
+                            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                            codeAddress(geocoder,map);
+                        }
+                        function codeAddress(geocoder,map) {
+                            geocoder.geocode( { 'address': addy}, function(results, status) {
+                            if (status == 'OK') {
+                                map.setCenter(results[0].geometry.location);
+                                var marker = new google.maps.Marker({
+                                    position: results[0].geometry.location,
+                                });
+                                marker.setMap(map);
+                            } else {
+                                alert('Geocode was not successful for the following reason: ' + status);
+                            }
+                        });
+                        }
+                        //google.maps.event.addDomListener(window, 'load', initMap);
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApy-o4nSOhQlLnd0KbCuL1a42nWuKUY-c&callback=initMap"
+                    async defer></script>
                 </div>
             </div>
 

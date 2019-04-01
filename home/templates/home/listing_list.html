@@ -24,7 +24,7 @@
           {% for choice in all_listings %}
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{% static 'images/gmarc.jpg'%}" alt="Card image cap">
+                <img class="card-img-top" src="{{MEDIA_URL}}{{choice.front_View.url}}" alt="Card image cap">
                 <div class="card-body">
 
                     <h5 class="jumbotron-heading">{{choice.address}}</h5>

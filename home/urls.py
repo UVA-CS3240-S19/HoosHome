@@ -1,5 +1,6 @@
 from django.urls import path, include
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from . import views
 
@@ -12,4 +13,4 @@ urlpatterns = [
     path('filters', views.ListingListFilter.as_view(), name='filters'),
     path('search', views.search, name='search'),
     path('individual/<int:listing_id>', views.individual, name='individual'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

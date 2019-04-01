@@ -11,7 +11,7 @@ class Listing(models.Model):
     #zip = models.CharField("ZIP / Postal code", max_length=12,default=22903)
 
 
-
+    
     #bedsbaths = models.CharField(max_length=200, default="2B/2B")
 
     #Listing info
@@ -59,3 +59,4 @@ class Listing(models.Model):
 class Users(models.Model):
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
+    

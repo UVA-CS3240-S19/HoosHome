@@ -13,3 +13,8 @@ class SignUpForm(UserCreationForm):
 
 class SearchForm(forms.Form):
     search_text = forms.CharField(max_length = 30, required = True)
+    
+class ListingForm(ModelForm):
+    class Meta:
+        model = Listing
+        fields = ('pub_date', 'address', 'realtor_agent', 'description','front_View','interior_View','back_View', 'price')

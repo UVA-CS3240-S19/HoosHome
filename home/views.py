@@ -1,18 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView, ListView
-from .forms import SignUpForm, SearchForm
+from .forms import SignUpForm, SearchForm, ListingForm
 from .models import Listing
 from django.shortcuts import get_object_or_404
-
-
-class ListingCreateView(CreateView):
-    model = Listing
-    fields = ('pub_date', 'address', 'realtor_agent', 'description', 'price')
-
-    def form_valid(self, form):
-        return redirect('/listings')
-
 
 
 class ListingList(ListView):
@@ -59,6 +50,17 @@ def gitlink(request):
     link = redirect('https://github.com/UVA-CS3240-S19/project-102-nautilus')
     return link
 
+def ListingCreateView(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    if request.method == 'POST':
+        form = ListingForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/listings')
+    else:
+        form = ListingForm()
+    return render(request, 'home/listing_form.html', {'form': form})
 
 def signup(request):
     if request.method == 'POST':

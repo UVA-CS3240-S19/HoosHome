@@ -22,6 +22,9 @@ class LoginTests(TestCase):
         self.assertNotEqual(jeff.password, 'lemonade68')
         
 class ListingInfoTests(TestCase):
+    def testToString(self):
+        temp = Listing(address="1819 JPA", price=650, description="4 bed 2 bath in a great location")
+        self.assertEqual(temp.__str__, temp.address  + " for " + temp.price + "\nDescription: " + temp.description)
     def testFutureListing(self):
         time = timezone.now() + datetime.timedelta(days=30)
         future_question = Listing(pub_date=time)
@@ -70,7 +73,7 @@ class ListingReviewTests(TestCase):
         self.assertNotEqual(temp.ratings, 5)
     def testNumRatingsDefault(self):
         temp = Listing()
-        self.assertNotEqual(temp.ratings, 0)
+        self.assertNotEqual(temp.number_of_ratings, 0)
     def testNumRatingsTrue(self):
         temp = Listing(number_of_ratings=20)
         self.assertEqual(temp.number_of_ratings, 20)

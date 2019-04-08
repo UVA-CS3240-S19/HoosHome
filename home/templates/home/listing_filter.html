@@ -112,10 +112,10 @@ body {
 
 
 </style>
-<p>Test</p>
-<h1>Filtering &amp; sorting</h1>
-<h2>Filter(not implemented)</h2>
-<div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">show all</button>
+<section class="jumbotron text-center">
+<h1 class="text-center">Filtering &amp; sorting</h1>
+<h2 class="text-center">Filter</h2>
+<div id="filters" class="button-group d-flex justify-content-center">  <button class="button is-checked" data-filter="*">show all</button>
   <button class="button" data-filter=".metal">with gym</button>
   <button class="button" data-filter=".transition">more than 3 stars</button>
   <button class="button" data-filter=".alkali, .alkaline-earth">2B2B</button>
@@ -125,8 +125,8 @@ body {
   <button class="button" data-filter="ium">xxxx</button>
 </div>
 
-<h2>Sort</h2>
-<div id="sorts" class="button-group">  <button class="button is-checked" data-sort-by="original-order">original order</button>
+<h2 class="text-center">Sort</h2>
+<div id="sorts" class="button-group d-flex justify-content-center">  <button class="button is-checked" data-sort-by="original-order">original order</button>
   <button class="button" data-sort-by="name">Name</button>
   <button class="button" data-sort-by="named">Name(Descending)</button>
   <button class="button" data-sort-by="price">Price</button>
@@ -134,8 +134,14 @@ body {
   <button class="button" data-sort-by="rating">Rating(not implemented)</button>
     <button class="button" data-sort-by="rating">Rating</button>
 </div>
+</section>
 
 <div class="grid">
+ {% if not all_listings %}
+    <br>
+    <h5 class="text-center">NO RESULTS FOUND</h5>
+    {% endif %}
+
  {% for choice in all_listings %}
             <div class="element-item post-transition metal " data-category="post-transition">
               <div class="card mb-4 box-shadow">

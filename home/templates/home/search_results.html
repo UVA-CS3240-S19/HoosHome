@@ -6,14 +6,50 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
+
     <input type="submit" value="Submit">
 </form>
 <main role="main">
     <link rel="stylesheet" type="text/css" href="../../static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <section class="jumbotron text-center">
+                              <div class="container">
+                        <form action="#" method="post" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-3 col-sm-12 p-0">
+                                            <input name="keyword" type="text" class="form-control search-slt" placeholder="Keyword Search">
+                                        </div>
+                                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                            <select name="beds" class="form-control search-slt" id="exampleFormControlSelect1">
+                                                <option>Number of Bedrooms</option>
+                                                <option>all beds</option>
+                                                <option>1 bed</option>
+                                                <option>2 beds</option>
+                                                <option>3 beds</option>
+                                                <option>3+ beds</option>
+                                            </select>
+                                        </div>
+                                          <div class="col-lg-3 col-md-3 col-sm-15 p-0">
+                                            <select name="baths" class="form-control search-slt" id="exampleFormControlSelect2">
+                                                <option>Number of Bathrooms</option>
+                                                <option>all baths</option>
+                                                <option>1 bath</option>
+                                                <option>2 baths</option>
+                                                <option>3 baths</option>
+                                                <option>3+ baths</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
         <div class="container">
           <h1 class="jumbotron-heading">Listings example</h1>
           <p class="lead text-muted">HOOS HOME</p>
@@ -45,7 +81,8 @@
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">Contact Property</button>
                     </div>
-                      <small class="text-muted">{{choice.beds}}</small>
+                      <small class="text-muted">{{choice.beds}} Beds</small>
+                      <small class="text-muted">{{choice.baths}} Baths</small>
                     <small class="text-muted">${{choice.price}}/Month</small>
                   </div>
                 </div>

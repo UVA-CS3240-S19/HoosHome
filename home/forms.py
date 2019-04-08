@@ -15,7 +15,12 @@ class SignUpForm(UserCreationForm):
 
 class SearchForm(forms.Form):
     search_text = forms.CharField(max_length = 30, required = True)
-    
+    BEDS = (("1","all beds"),("2","1 bed"),("3","2 beds"),("4","3 beds"),("5","3+ beds"))
+    BATHS = (("1","all baths"),("2","1 bath"),("3","2 baths"),("4","3 baths"),("5","3+ baths"))
+    beds = forms.ChoiceField(choices=BEDS)
+    baths = forms.ChoiceField(choices=BATHS)
+    days = forms.ChoiceField(choices=[(x, x) for x in range(1, 5)])
+
 class ListingForm(ModelForm):
     class Meta:
         model = Listing

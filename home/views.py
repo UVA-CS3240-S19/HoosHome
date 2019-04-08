@@ -26,24 +26,68 @@ class ListingListFilter(ListView):
 
 def search(request):
     if request.method == 'POST':
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            try:
-                status = Listing.objects.filter(address__icontains=form.cleaned_data.get(
-                    "search_text"))  # filter returns a list so you might consider skip except part
-            except:
-                return render(request, "home/search_results.html", {'form': form})
-        return render(request, "home/search_results.html", {"filter": status, 'form': form})
+        key = request.POST['keyword']
+        beds = request.POST.get('beds',False)
+        baths = request.POST.get('baths',False)
+        if key == "" and beds == "Number of Bedrooms" and baths == "Number of Bathrooms":
+            return render(request, "home/search_results.html" )
+        status = Listing.objects.filter(address__icontains=(key))
+        if beds == "1 bed":
+            status = status.filter(beds=1)
+        elif beds == "2 beds":
+            status = status.filter(beds=2)
+        elif beds == "3 beds":
+            status = status.filter(beds=3)
+        elif beds == "3+ beds":
+            status = status.filter(beds__gte=3)
+
+        if baths == "1 bath":
+            status = status.filter(baths=1)
+        elif baths == "2 baths":
+            status = status.filter(baths=2)
+        elif baths == "3 baths":
+            status = status.filter(baths=3)
+        elif baths == "3+ baths":
+            status = status.filter(baths__gte=3)
+
+        return render(request, "home/search_results.html", {"filter": status})
     else:
-        form = SearchForm()
-        return render(request, "home/search_results.html", {'form': form})
+        return render(request, "home/search_results.html")
 
 def individual(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
     return render(request, "home/listing_individual.html", {"listing": listing})
 
 def home(request):
-    return render(request, "home.html", {})
+    if request.method == 'POST':
+        key = request.POST['keyword']
+        beds = request.POST.get('beds',False)
+        baths = request.POST.get('baths',False)
+        if key == "" and beds == "Number of Bedrooms" and baths == "Number of Bathrooms":
+            return render(request, "home.html" )
+        status = Listing.objects.filter(address__icontains=(key))
+        if beds == "1 bed":
+            status = status.filter(beds=1)
+        elif beds == "2 beds":
+            status = status.filter(beds=2)
+        elif beds == "3 beds":
+            status = status.filter(beds=3)
+        elif beds == "3+ beds":
+            status = status.filter(beds__gte=3)
+
+        if baths == "1 bath":
+            status = status.filter(baths=1)
+        elif baths == "2 baths":
+            status = status.filter(baths=2)
+        elif baths == "3 baths":
+            status = status.filter(baths=3)
+        elif baths == "3+ baths":
+            status = status.filter(baths__gte=3)
+
+        return render(request,"home/listing_filter.html", {"all_listings": status})
+    else:
+        return render(request, "home.html")
+
 
 
 def gitlink(request):

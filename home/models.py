@@ -4,14 +4,10 @@ from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
 class Listing(models.Model):
 
     #city = models.CharField(max_length=50,default="Charlottesville")
     #zip = models.CharField("ZIP / Postal code", max_length=12,default=22903)
-
-
-    
     #bedsbaths = models.CharField(max_length=200, default="2B/2B")
 
     #Listing info

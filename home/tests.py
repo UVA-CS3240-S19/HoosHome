@@ -23,8 +23,8 @@ class LoginTests(TestCase):
         
 class ListingInfoTests(TestCase):
     def testToString(self):
-        temp = Listing(address="1819 JPA", price=650, description="4 bed 2 bath in a great location")
-        self.assertEqual(temp.__str__, temp.address  + " for " + str(temp.price) + "\nDescription: " + temp.description)
+        temp = Listing(address="a", price=650, description="c")
+        self.assertEqual(temp.__str__, "a for 650\nDescription: c")
     def testFutureListing(self):
         time = timezone.now() + datetime.timedelta(days=30)
         future_question = Listing(pub_date=time)

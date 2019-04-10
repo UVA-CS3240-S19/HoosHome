@@ -64,7 +64,7 @@ class ListingInfoTests(TestCase):
 class ListingReviewTests(TestCase):
     def testRatingsDefault(self):
         temp = Listing()
-        self.assertNotEqual(temp.ratings, 0) 
+        self.assertEqual(temp.ratings, 0) 
     def testRatingsTrue(self):
         temp = Listing(ratings=5)
         self.assertEqual(temp.ratings, 5)
@@ -73,7 +73,7 @@ class ListingReviewTests(TestCase):
         self.assertNotEqual(temp.ratings, 5)
     def testNumRatingsDefault(self):
         temp = Listing()
-        self.assertNotEqual(temp.number_of_ratings, 0)
+        self.assertEqual(temp.number_of_ratings, 0)
     def testNumRatingsTrue(self):
         temp = Listing(number_of_ratings=20)
         self.assertEqual(temp.number_of_ratings, 20)

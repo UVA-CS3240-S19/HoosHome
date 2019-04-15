@@ -16,7 +16,6 @@ Hoos Home is a web application to connect students with housing options. On the 
 In the top navbar:
 	BUY- Allows you to view existing properties
 	SELL- Allows you to create a new listing (must be signed-in)
-	GITHUB – Connects to the team Github
 	HELP – Takes you to instructions for the site
 	SIGN UP – Create a new account
 	LOGIN – Go to the login page to access an account

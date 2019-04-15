@@ -36,6 +36,9 @@ class Listing(models.Model):
     reviews = models.CharField(max_length=20000, default="[]")
 
     # Use Json to store lists as strings
+    def add_review(self, x):
+        self.set_review(self.get_review().append(x))
+
     def set_review(self, x):
         self.reviews = json.dumps(x)
 

@@ -97,10 +97,12 @@
             <div class="card my-4">
                 <h5 class="card-header">Leave a Review:</h5>
                 <div class="card-body">
-                    <form>
+                    <form action="#" method="post">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            {% csrf_token %}
+                            <textarea name="input" class="form-control" rows="3"></textarea>
                         </div>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
@@ -111,9 +113,17 @@
                 <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                 <div class="media-body">
                     <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    tibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                 </div>
             </div>
+            {% for review in listing.get_review %}
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">Commenter Name</h5>{{review}}
+                </div>
+            </div>
+            {% endfor %}
 
             <!-- Comment with nested comments
             <div class="media mb-4">
@@ -259,13 +269,16 @@
 
                             <ul class="list-unstyled mb-0">
 
-                        <li> <button type="submit" class="btn btn-primary">Email Landlord</button></li>
+                        <li><form action="http://google.com">
+                            <button type="submit" class="btn btn-primary">Email Landlord</button>
+                                </form>
+                                </li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <ul class="list-unstyled mb-0">
 
-                                <li> <button type="submit" class="btn btn-primary">Visit Website</button></li>
+                                <li> <form action="http://{{listing.realtor_site}}"><button type="submit" class="btn btn-primary">Visit Website</button></form></li>
 
                             </ul>
                         </div>
@@ -309,7 +322,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Hoos Home 2019</p>
         </div>
         <!-- /.container -->
     </footer>

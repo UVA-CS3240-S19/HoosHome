@@ -56,6 +56,14 @@ def search(request):
 
 def individual(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
+    if request.method == "POST":
+        input = request.POST['input']
+        temp_list = listing.get_review()
+        temp_list.append(input)
+        listing.set_review(temp_list)
+        listing.save()
+
+
     return render(request, "home/listing_individual.html", {"listing": listing})
 
 def home(request):

@@ -8,9 +8,8 @@ urlpatterns = [
     path('', views.home, name="homepage"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('social_django.urls', namespace='social')),
-    path('createlisting/', views.ListingCreateView, name='createlisting'),
-    path('listings', views.ListingList.as_view(), name='listings'),
-    path('filters', views.ListingListFilter.as_view(), name='filters'),
+    path('sell/', views.ListingCreateView, name='sell'),
+    path('buy', views.ListingListFilter.as_view(), name='buy'),
     path('search', views.search, name='search'),
     path('individual/<int:listing_id>', views.individual, name='individual'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

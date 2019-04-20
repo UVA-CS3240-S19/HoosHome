@@ -40,7 +40,6 @@ def search(request):
             status = status.filter(beds=3)
         elif beds == "3+ beds":
             status = status.filter(beds__gte=3)
-
         if baths == "1 bath":
             status = status.filter(baths=1)
         elif baths == "2 baths":
@@ -50,7 +49,7 @@ def search(request):
         elif baths == "3+ baths":
             status = status.filter(baths__gte=3)
 
-        return render(request, "home/search_results.html", {"filter": status})
+        return render(request, "home/search_results.html", {"buy": status})
     else:
         return render(request, "home/search_results.html")
 

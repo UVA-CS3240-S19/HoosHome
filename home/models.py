@@ -34,16 +34,20 @@ class Listing(models.Model):
     ratings = models.IntegerField(default=0)
     number_of_ratings = models.IntegerField(default=0)
     reviews = models.CharField(max_length=20000, default="[]")
+    #reviewers = models.CharField(max_length=20000, default="[]")
 
     # Use Json to store lists as strings
-    def add_review(self, x):
-        self.set_review(self.get_review().append(x))
-
     def set_review(self, x):
         self.reviews = json.dumps(x)
 
     def get_review(self):
         return json.loads(self.reviews)
+
+    # def set_reviewer(self, x):
+    #     self.reviewers = json.dumps(x)
+    #
+    # def get_reviewer(self):
+    #     return json.loads(self.reviewers)
 
 
     #Landlord info

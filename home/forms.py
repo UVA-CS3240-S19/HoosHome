@@ -22,6 +22,17 @@ class SearchForm(forms.Form):
     days = forms.ChoiceField(choices=[(x, x) for x in range(1, 5)])
 
 class ListingForm(ModelForm):
+    gym = forms.BooleanField()
+    parking = forms.BooleanField()
+    wifi = forms.BooleanField()
+    heating = forms.BooleanField()
+    furnished = forms.BooleanField()
+    lounge = forms.BooleanField()
+    laundry = forms.BooleanField()
+    pets = forms.BooleanField()
+    AC = forms.BooleanField()
+    business_center = forms.BooleanField()
+
     class Meta:
         model = Listing
         fields = ('pub_date', 'address', 'realtor_agent', 'description','front_View','interior_View','back_View', 'price')

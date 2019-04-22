@@ -12,7 +12,7 @@ class Listing(models.Model):
 
     #Listing info
     description = models.TextField()
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField('date published', default=timezone.now)
     address = models.CharField(max_length=200)
     price = models.IntegerField()
     features =  models.CharField(max_length=50, default="[]")
@@ -34,7 +34,7 @@ class Listing(models.Model):
     ratings = models.IntegerField(default=0)
     number_of_ratings = models.IntegerField(default=0)
     reviews = models.CharField(max_length=20000, default="[]")
-    #reviewers = models.CharField(max_length=20000, default="[]")
+    reviewers = models.CharField(max_length=20000, default="[]")
 
     # Use Json to store lists as strings
     def set_review(self, x):
@@ -43,17 +43,26 @@ class Listing(models.Model):
     def get_review(self):
         return json.loads(self.reviews)
 
-    # def set_reviewer(self, x):
-    #     self.reviewers = json.dumps(x)
-    #
-    # def get_reviewer(self):
-    #     return json.loads(self.reviewers)
+    def set_reviewer(self, x):
+        self.reviewers = json.dumps(x)
+
+    def get_reviewer(self):
+        return json.loads(self.reviewers)
+
+    def get_both(self):
+        reviewers = self.get_reviewer()
+        reviews = self.get_review()
+        temp = []
+        for i in range(min(len(reviews),len(reviews))):
+            temp.append((reviews[i],reviewers[i]))
+
+        return temp
 
 
     #Landlord info
     realtor_agent = models.CharField(max_length=200)
     realtor_site = models.CharField(max_length=200, default="google.com")
-    phone_number = models.CharField(max_length=15, default="999-999-9999")
+    phone_number = models.CharField(max_length=15)
 
     def __str__(self):
         return str(self.address)  + " for " + str(self.price) + "\nDescription: " + str(self.description)

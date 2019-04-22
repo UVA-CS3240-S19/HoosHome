@@ -4,6 +4,7 @@ from django.views.generic import CreateView, ListView
 from .forms import SignUpForm, SearchForm, ListingForm
 from .models import Listing
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 
 
 class ListingList(ListView):
@@ -57,11 +58,25 @@ def individual(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
     if request.method == "POST":
         input = request.POST['input']
+        rating = request.POST['rating']
+        if input == "" or input == None:
+            return render(request, "home/listing_individual.html", {"listing": listing})
+
+        new_rating = (int(listing.number_of_ratings) * int(listing.ratings) + int(rating)) / (int(listing.number_of_ratings) + 1)
+        listing.ratings = new_rating
+        listing.number_of_ratings += 1
+
+
         temp_list = listing.get_review()
         temp_list.append(input)
         listing.set_review(temp_list)
-        listing.save()
 
+        temp_list2 = listing.get_reviewer()
+        temp_list2.append(request.user.username)
+        print(temp_list2)
+        listing.set_reviewer(temp_list2)
+
+        listing.save()
 
     return render(request, "home/listing_individual.html", {"listing": listing})
 
@@ -106,9 +121,34 @@ def ListingCreateView(request):
         return redirect('login')
     if request.method == 'POST':
         form = ListingForm(request.POST, request.FILES)
+        temp = []
+        if form["gym"].data == True:
+            temp.append(0)
+        if form["parking"].data == True:
+            temp.append(1)
+        if form["wifi"].data == True:
+            temp.append(2)
+        if form["heating"].data == True:
+            temp.append(3)
+        if form["furnished"].data == True:
+            temp.append(4)
+        if form["lounge"].data == True:
+            temp.append(5)
+        if form["laundry"].data == True:
+            temp.append(6)
+        if form["pets"].data == True:
+            temp.append(7)
+        if form["AC"].data == True:
+            temp.append(8)
+        if form["business_center"].data == True:
+            temp.append(9)
+
         if form.is_valid():
-            form.save()
-            return redirect('/listings')
+            object = form.save()
+            object.pub_date = timezone.now()
+            object.set_features(temp)
+            object.save()
+            return redirect('/buy')
     else:
         form = ListingForm()
     return render(request, 'home/listing_form.html', {'form': form})

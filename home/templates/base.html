@@ -10,6 +10,9 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
     integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <title>Hoos Home</title>
 </head>
 
@@ -46,9 +49,10 @@
       </ul>
       {% else %}
       <ul class="navbar-nav navbar-right">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a></li>
-        </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">
+                  <i class="fab fa-google-plus-g"></i> Login with Google</a>
+          </li>
         {% endif %}
       </ul>
       <html>

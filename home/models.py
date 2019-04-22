@@ -34,7 +34,7 @@ class Listing(models.Model):
     ratings = models.IntegerField(default=0)
     number_of_ratings = models.IntegerField(default=0)
     reviews = models.CharField(max_length=20000, default="[]")
-    reviewers = models.CharField(max_length=20000, default="[]")
+    reviewers = models.CharField(max_length=19000, default="[]")
 
     # Use Json to store lists as strings
     def set_review(self, x):

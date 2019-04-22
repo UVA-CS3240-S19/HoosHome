@@ -18,9 +18,9 @@ class Listing(models.Model):
     features =  models.CharField(max_length=50, default="[]")
     beds = models.IntegerField(default=0)
     baths = models.IntegerField(default=0)
-    front_View = models.ImageField(upload_to='media', default='static/images/rotunda')
-    interior_View = models.ImageField('Interior View', upload_to='individual', default='static/images/rotunda')
-    back_View = models.ImageField('Back View', upload_to='media', default='static/images/rotunda')
+    front_View = models.ImageField(upload_to='front', default='rotunda.jpg')
+    interior_View = models.ImageField('Interior View', upload_to='interior', default='rotunda.jpg')
+    back_View = models.ImageField('Back View', upload_to='back', default='rotunda.jpg')
 
     #Use Json to store lists as strings
     def set_features(self, x):

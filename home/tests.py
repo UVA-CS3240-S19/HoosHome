@@ -19,8 +19,7 @@ class LoginTests(TestCase):
         self.assertEqual(cavman.password, 'uva12345')
     def testPassFalse(self):
         jeff = Users(username='mynamejeff',password='lemonade69')
-        self.assertNotEqual(jeff.password, 'lemonade68')
-  """      
+        self.assertNotEqual(jeff.password, 'lemonade68')    
 class ListingInfoTests(TestCase):    
     def testFutureListing(self):
         time = timezone.now() + datetime.timedelta(days=30)
@@ -77,4 +76,3 @@ class ListingReviewTests(TestCase):
     def testNumRatingsFalse(self):
         temp = Listing(number_of_ratings=60)
         self.assertNotEqual(temp.number_of_ratings, 20)
-"""

@@ -66,14 +66,13 @@ def individual(request, listing_id):
         listing.ratings = new_rating
         listing.number_of_ratings += 1
 
-
         temp_list = listing.get_review()
         temp_list.append(input)
         listing.set_review(temp_list)
 
         temp_list2 = listing.get_reviewer()
         temp_list2.append(request.user.username)
-        print(temp_list2)
+        #print(temp_list2)
         listing.set_reviewer(temp_list2)
 
         listing.save()
@@ -143,9 +142,13 @@ def ListingCreateView(request):
         if form["business_center"].data == True:
             temp.append(9)
 
+        print(form["beds"].data)
+
         if form.is_valid():
             object = form.save()
             object.pub_date = timezone.now()
+            object.beds = form["beds"].data
+            object.baths = form["baths"].data
             object.set_features(temp)
             object.save()
             return redirect('/buy')

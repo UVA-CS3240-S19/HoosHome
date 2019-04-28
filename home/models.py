@@ -61,7 +61,7 @@ class Listing(models.Model):
 
     #Landlord info
     realtor_agent = models.CharField(max_length=200)
-    realtor_site = models.CharField(max_length=200, default="google.com")
+    realtor_site = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=15)
 
     def __str__(self):

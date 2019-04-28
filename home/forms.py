@@ -33,6 +33,15 @@ class ListingForm(ModelForm):
     AC = forms.BooleanField(required = False)
     business_center = forms.BooleanField(required = False)
 
+    baths_list =['1 bath','2 baths', '3 baths', '4+']
+
+    temp = [(x,x) for x in range(1,5)]
+
+    baths = forms.ChoiceField(choices=temp)
+
+    beds_list =['1 bed','2 beds', '3 beds', '4+']
+    beds = forms.ChoiceField(choices=temp)
+
     class Meta:
         model = Listing
-        fields = ('address', 'realtor_agent', 'description','front_View','interior_View','back_View', 'price', 'phone_number')
+        fields = ('address', 'realtor_agent', 'description','front_View','interior_View','back_View', 'price', 'phone_number', 'realtor_site')

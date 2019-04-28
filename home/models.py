@@ -65,6 +65,13 @@ class Listing(models.Model):
     realtor_site = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=15)
 
+    def get_short_description(self):
+        text = str(self.description)
+        if len(text) < 200:
+            print(len(text))
+            return text + "‌‌ " * int((200 - len(text)) * 1.8)
+        return text[:200] + "......"
+
     def __str__(self):
         return str(self.address)  + " for " + str(self.price) + "\nDescription: " + str(self.description)
 

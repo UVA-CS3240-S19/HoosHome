@@ -208,6 +208,7 @@ body {
 		}
 
 
+
 </style>
       <section class="jumbotron text-center">
         <div class="container">
@@ -362,7 +363,7 @@ body {
  {% for choice in all_listings %}
             <div class="element-item {% if 0 in choice.get_features %}g{% endif %} {% if 1 in choice.get_features %}p{%endif %} {% if 2 in choice.get_features %}w{% endif %} {% if 3 in choice.get_features %}h{% endif %} {% if 4 in choice.get_features %}f{% endif %} {% if 5 in choice.get_features %}lo{% endif %} {% if 6 in choice.get_features %}la{% endif %} {% if 7 in choice.get_features %}pa{% endif %} {% if 8 in choice.get_features %}ac{% endif %} {% if 9 in choice.get_features %}bc{% endif %}">
 
-              <div class="card mb-4 box-shadow">
+              <div class="card mb-4 h-100 box-shadow">
                 <img class="card-img-top" src="{{MEDIA_URL}}{{ choice.front_View.url }}" alt="Card image cap">
                 <div class="card-body">
 
@@ -375,19 +376,19 @@ body {
                     <span class="fa fa-star {% if choice.ratings > 2 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 3 %}checked{% endif %}"></span>
                     <span class="fa fa-star {% if choice.ratings > 4 %}checked{% endif %}"></span>
-                  <p class="card-text" >{{choice.description|slice:":200" }}......</p>
+                  <p class="card-text" >{{choice.get_short_description}}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <a hidden class="rating">{{choice.ratings}}</a>
                       <a hidden class="price">{{choice.price}}</a>
-                    <div class="btn-group">
+                    <div class="btn-group ">
 
                      <a href="individual/{{choice.id}}">
                         <button type="button" class="btn btn-sm btn-outline-secondary" >More Information</button>
                     </a>
+
                     </div>
                       <small class="text-muted">{{choice.beds}}B/{{choice.baths}}B </small>
-                    <small class="text-muted">${{choice.price}}/Month</small>
-                                          <div class="fa fa-info-circle qwe">
+                      <div class="fa fa-info-circle qwe">
   <div class="row qweqwe">
                         <div class="col-lg-6">
                             <ul class="list-unstyled mb-0">
@@ -409,6 +410,8 @@ body {
                         </div>
                     </div>
 </div>
+                    <small class="text-muted">${{choice.price}}/Month</small>
+
                   </div>
                 </div>
               </div>

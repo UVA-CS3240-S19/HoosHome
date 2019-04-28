@@ -31,9 +31,15 @@
         <li class="nav-item">
           <a class="nav-link" href="/buy">Buy</a>
         </li>
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="/sell">Sell</a>
         </li>
+        {% else %}
+        <li class="nav-item">
+          <a style="opacity: 0.3" class="nav-link" href="/">Sell</a>
+        </li>
+        {% endif %}
    
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/UVA-CS3240-S19/project-102-nautilus/blob/master/README.md">Help</a>

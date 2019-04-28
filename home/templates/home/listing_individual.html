@@ -100,25 +100,30 @@
 
             <!-- Comments Form -->
             <div class="card my-4">
-                <h5 class="card-header">Leave a Review:{% if not user.is_authenticated %} (Please Log in) {% endif %}</h5>
-                <div class="card-body">
-                    <form action="#" method="post">
-                        <div class="form-group">
-                            {% csrf_token %}
-                            <textarea name="input" class="form-control" rows="3" {% if not user.is_authenticated %} disabled {% endif %}></textarea>
-                        </div>
-                        <fieldset class="rating" {% if not user.is_authenticated %} hidden {% endif %}>
+                <h5 class="card-header">Leave a Review:{% if not user.is_authenticated %} (Please Log in) {% endif %}
+                </h5>
+                <h5 class="card-header"><fieldset class="rating" {% if not user.is_authenticated %} hidden {% endif %}>
     <input type="radio" id="star5" name="rating" value="5" checked/><label for="star5" title="Rocks!">5 stars</label>
     <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
     <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
     <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
     <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
-</fieldset>
+</fieldset></h5>
+                <div class="card-body">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            <textarea name="input" class="form-control" rows="3" {% if not user.is_authenticated %} disabled {% endif %} required></textarea>
 
-                        <button type="submit" class="qq center btn btn-primary" {% if not user.is_authenticated %} disabled {% endif %}>Submit</button>
+                            </div>
+
+        <button type="submit" class="qq btn btn-primary" {% if not user.is_authenticated %} disabled {% endif %}>Submit</button>
+
 
                     </form>
+
                 </div>
+
             </div>
 
             <!-- Single Comment -->
@@ -272,20 +277,10 @@
                 <h6 class="text-center">{{listing.realtor_site}}</h6>
                 <div class="card-body">
                                                     <div class="row">
-                        <div class="col-lg-6">
-
+                        <div class="col-lg-12">
                             <ul class="list-unstyled mb-0">
 
-                        <li><form action="http://google.com">
-                            <button type="submit" class="btn btn-primary">Email Landlord</button>
-                                </form>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-
-                                <li> <form action="http://{{listing.realtor_site}}"><button type="submit" class="btn btn-primary">Visit Website</button></form></li>
+                                <li class="text-center"> <form action="http://{{listing.realtor_site}}"><button type="submit" class="btn btn-primary">       Visit Website      </button></form></li>
 
                             </ul>
                         </div>

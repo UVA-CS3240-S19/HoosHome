@@ -130,7 +130,7 @@ class SignUpFormTests(TestCase):
 class ListingInfoTests(TestCase): 
     def testToString(self):
         listing = Listing(address="1819 JPA", price=650, description="Yes")
-        self.assertEqual(str(listing), str(listing.address)  + str(" for ") + str(listing.price) + str(" Description: ") + str(listing.description))
+        self.assertEqual(str(listing), str(listing.address)  + str(" for ") + str(listing.price) + str("\nDescription: ") + str(listing.description))
     def testFutureListing(self):
         time = timezone.now() + datetime.timedelta(days=30)
         future_listing = Listing(pub_date=time)

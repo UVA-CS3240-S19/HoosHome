@@ -33,6 +33,7 @@ class Listing(models.Model):
     #Review info
     ratings = models.IntegerField(default=0)
     number_of_ratings = models.IntegerField(default=0)
+    total_ratings = models.IntegerField(default=0)
     reviews = models.CharField(max_length=20000, default="[]")
     reviewers = models.CharField(max_length=19000, default="[]")
 

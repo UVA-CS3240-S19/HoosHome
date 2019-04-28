@@ -58,13 +58,15 @@ def individual(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
     if request.method == "POST":
         input = request.POST['input']
-        rating = request.POST['rating']
+        rating = int(request.POST['rating'])
         if input == "" or input == None:
             return render(request, "home/listing_individual.html", {"listing": listing})
 
-        new_rating = (int(listing.number_of_ratings) * int(listing.ratings) + int(rating)) / (int(listing.number_of_ratings) + 1)
-        listing.ratings = new_rating
+        listing.total_ratings += rating
         listing.number_of_ratings += 1
+        listing.ratings = round(int(listing.total_ratings) / int(listing.number_of_ratings),2)
+        print(rating)
+        print(listing.number_of_ratings)
 
         temp_list = listing.get_review()
         temp_list.append(input)

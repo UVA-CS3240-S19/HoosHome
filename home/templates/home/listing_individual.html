@@ -73,13 +73,13 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
 
-                        <img class="d-block w-100" src= "{{ listing.front_View.url }}"  alt="First slide">
+                        <img class="d-block w-100" src="{{MEDIA_URL}}{{ listing.front_View.url }}"  alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ listing.back_View.url }}" alt="Second slide">
+                        <img class="d-block w-100" src="{{MEDIA_URL}}{{ listing.interior_View.url }}" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ listing.interior_View.url }}" alt="Third slide">
+                        <img class="d-block w-100" src="{{MEDIA_URL}}{{ listing.back_View.url }}" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

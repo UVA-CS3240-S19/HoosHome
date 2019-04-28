@@ -18,7 +18,7 @@ except ImportError:
     found = False
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
-    'hd': 'virginia.edu' || 'sherriff@gmail.com', 'prompt': 'select_account'
+   'hd': 'virginia.edu', 'prompt': 'select_account'
 }
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

@@ -13,9 +13,9 @@ Sources/Sites/References used throughout this project:
 12. https://bootsnipp.com/snippets/vl4R7t
 13. https://fontawesome.com/icons
 14. https://isotope.metafizzy.co/filtering.html
-15.
-16.
-17.
+15. https://jquery.com/
+16. https://getuikit.com/
+17. 
 18.
 19.
 20.

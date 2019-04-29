@@ -16,7 +16,7 @@ Sources/Sites/References used throughout this project:
 15. https://jquery.com/
 16. https://getuikit.com/
 17. https://getbootstrap.com/docs/4.0/components/card/
-18.
+18. https://getbootstrap.com/docs/4.0/components/navbar/
 19.
 20.
 

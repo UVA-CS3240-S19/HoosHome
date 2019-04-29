@@ -39,7 +39,7 @@ class ListingForm(ModelForm):
 
     baths_list = ['1 bath', '2 baths', '3 baths', '4+']
 
-    temp = [(x, x) for x in range(1, 5)]
+    temp = [(x, x) for x in range(1, 10)]
 
     baths = forms.ChoiceField(choices=temp)
 

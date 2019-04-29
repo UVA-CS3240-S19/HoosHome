@@ -15,7 +15,7 @@ Hoos Home is a web application to connect students with housing options. On the 
 
 In the top navbar:
 * BUY - Allows you to view existing properties
-* SELL - Allows you to create a new listing (must be signed-in to access otherwise will redirect home)
+* SELL - Allows you to create a new listing (only is visible when a user is logged in)
 * HELP – Takes you to our README.md
 * LOGIN WITH GOOGLE – Go to the login page (Must use a virginia.edu email address or be Professor Sherriff)
 

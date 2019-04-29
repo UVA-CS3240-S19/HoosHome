@@ -1,6 +1,6 @@
 Sources/Sites/References used throughout this project:
-1.
-2.
+1. https://medium.com/trabe/oauth-authentication-in-django-with-social-auth-c67a002479c1
+2. https://getbootstrap.com/docs/4.0/components/carousel/
 3.
 4.
 5.

@@ -10,9 +10,9 @@ Sources/Sites/References used throughout this project:
 9. http://www.learningaboutelectronics.com/Articles/How-to-display-an-image-in-Django.php
 10. https://www.w3schools.com/css/css_positioning.asp
 11. https://fosstack.com/how-to-add-google-authentication-in-django/
-12.
-13.
-14.
+12. https://bootsnipp.com/snippets/vl4R7t
+13. https://fontawesome.com/icons
+14. https://isotope.metafizzy.co/filtering.html
 15.
 16.
 17.

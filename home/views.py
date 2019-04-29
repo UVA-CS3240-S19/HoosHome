@@ -89,22 +89,22 @@ def home(request):
         if key == "" and beds == "Number of Bedrooms" and baths == "Number of Bathrooms":
             return render(request, "home.html" )
         status = Listing.objects.filter(address__icontains=(key))
-        if beds == "1 bed":
+        if beds == "1 Bed":
             status = status.filter(beds=1)
-        elif beds == "2 beds":
+        elif beds == "2 Beds":
             status = status.filter(beds=2)
-        elif beds == "3 beds":
+        elif beds == "3 Beds":
             status = status.filter(beds=3)
-        elif beds == "3+ beds":
+        elif beds == "3+ Beds":
             status = status.filter(beds__gte=3)
 
-        if baths == "1 bath":
+        if baths == "1 Bath":
             status = status.filter(baths=1)
-        elif baths == "2 baths":
+        elif baths == "2 Baths":
             status = status.filter(baths=2)
-        elif baths == "3 baths":
+        elif baths == "3 Baths":
             status = status.filter(baths=3)
-        elif baths == "3+ baths":
+        elif baths == "3+ Baths":
             status = status.filter(baths__gte=3)
 
         return render(request,"home/listing_filter.html", {"all_listings": status})

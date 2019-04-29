@@ -15,7 +15,7 @@ Sources/Sites/References used throughout this project:
 14. https://isotope.metafizzy.co/filtering.html
 15. https://jquery.com/
 16. https://getuikit.com/
-17. 
+17. https://getbootstrap.com/docs/4.0/components/card/
 18.
 19.
 20.

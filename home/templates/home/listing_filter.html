@@ -364,7 +364,7 @@ body {
             <div class="element-item {% if 0 in choice.get_features %}g{% endif %} {% if 1 in choice.get_features %}p{%endif %} {% if 2 in choice.get_features %}w{% endif %} {% if 3 in choice.get_features %}h{% endif %} {% if 4 in choice.get_features %}f{% endif %} {% if 5 in choice.get_features %}lo{% endif %} {% if 6 in choice.get_features %}la{% endif %} {% if 7 in choice.get_features %}pa{% endif %} {% if 8 in choice.get_features %}ac{% endif %} {% if 9 in choice.get_features %}bc{% endif %}">
 
               <div class="card mb-4 h-100 box-shadow">
-                <img class="card-img-top" src="{{MEDIA_URL}}{{ choice.front_View.url }}" alt="Card image cap">
+                <img class="card-img-top" style="width: 100%; height: 225px;" src="{{MEDIA_URL}}{{ choice.front_View.url }}" alt="Card image cap">
                 <div class="card-body">
 
                     <h5 class="name jumbotron-heading">{{choice.address}}</h5>

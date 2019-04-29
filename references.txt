@@ -1,6 +1,6 @@
 Sources/Sites/References used throughout this project:
 1. https://medium.com/trabe/oauth-authentication-in-django-with-social-auth-c67a002479c1
-2. https://fosstack.com/how-to-add-google-authentication-in-django/
+2. https://getbootstrap.com/docs/4.0/components/carousel/
 3. https://python-social-auth-docs.readthedocs.io/en/latest/backends/google.html
 4. https://docs.djangoproject.com/en/2.2/
 5. https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/
@@ -9,7 +9,7 @@ Sources/Sites/References used throughout this project:
 8. https://www.geeksforgeeks.org/python-uploading-images-in-django/
 9. http://www.learningaboutelectronics.com/Articles/How-to-display-an-image-in-Django.php
 10. https://www.w3schools.com/css/css_positioning.asp
-11.
+11. https://fosstack.com/how-to-add-google-authentication-in-django/
 12.
 13.
 14.
@@ -29,3 +29,5 @@ Static Images (Does not include images uploaded via the listing form):
 6. https://www.flatsatwestvillage.com/
 7. https://www.forrent.com/va/charlottesville/grand-marc-at-the-corner/t3kw9n8
 8. https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiuhNfzvvXhAhWSmOAKHVNaB2QQjRx6BAgBEAU&url=http%3A%2F%2Fwww.rbiva.com%2Fproject%2Funiversity-virginia-rotunda%2F&psig=AOvVaw0FTKkgvmsJFGwDcRKJe9iJ&ust=1556633788654992
+
+

@@ -30,3 +30,5 @@ Additional information for Professor Sherriff:
    * Username: professor
    * Password: sherriff
 * Navigate back to the homepage - now with full access!
+
+Resources referenced and utilized can be found in references.txt.
